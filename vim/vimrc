@@ -1,0 +1,107 @@
+" VIMRC
+
+"" -----------------------------------------------------------------------------
+"   Vundle (Settings) - Vim Plugin Manager
+"" -----------------------------------------------------------------------------
+
+set nocompatible                        " be iMproved, required
+filetype off                            " required (for vundle)
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'mileszs/ack.vim'                " depends on system ack
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
+filetype plugin indent on               " required
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+colorscheme pablo
+set background=dark
+let mapleader = "\<Space>"
+let maplocalleader = "\\"
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set backspace=indent,eol,start
+
+syntax on
+set autoindent
+set smartindent
+
+set number
+set ruler
+set wildmenu
+set wildmode=longest:full,full
+set listchars=nbsp:ϟ,eol:¬,tab:▸.,trail:•,extends:»,precedes:«
+
+set hlsearch
+set incsearch
+
+set tabpagemax=128
+
+set winheight=30
+set winminheight=5
+
+" See `:h Y`
+nnoremap Y y$
+
+" Save files faster
+nnoremap <leader>w :w<CR>
+
+" Fix quick write/quit
+command! Wq wq
+command! WQ wq
+command! W w
+command! Q q
+
+" Quickly (t)oggle common settings
+nnoremap <silent> <leader>th :set hlsearch!<CR>
+nnoremap <leader>tl :set list!<CR>
+nnoremap <leader>tn :set number!<CR>
+nnoremap <leader>tp :set paste!<CR>
+nnoremap <leader>tw :set wrap!<CR>
+nnoremap <leader>tsp :set spell!<CR>
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.jy set filetype=python
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" Window Movement Mappings - Make switching windows easier
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Resize window
+nnoremap <silent> <leader>> :vertical resize +10<CR>
+nnoremap <silent> <leader>< :vertical resize -10<CR>
+
+nnoremap <c-n> <c-w><
+nnoremap <c-m> <c-w>>
+
+" Resize panes more than one line at a time
+nnoremap <silent> + :exe "resize " . (winheight(0) * 5/4)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 3/4)<CR>
+
+"" -----------------------------------------------------------------------------
+"   Plugin Settings
+"" -----------------------------------------------------------------------------
+
+" Ack!
+nnoremap <leader>a :Ack! 
+nnoremap <leader>A :AckFromSearch<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if filereadable(expand($HOME . "/.vimrc.local"))
+  source ~/.vimrc.local
+endif
