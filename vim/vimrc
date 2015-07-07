@@ -14,6 +14,8 @@ Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mileszs/ack.vim'                " depends on system ack
 Plugin 'tpope/vim-fugitive'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype plugin indent on               " required
@@ -84,12 +86,11 @@ nnoremap <C-l> <C-w>l
 nnoremap <silent> <leader>> :vertical resize +10<CR>
 nnoremap <silent> <leader>< :vertical resize -10<CR>
 
-nnoremap <c-n> <c-w><
-nnoremap <c-m> <c-w>>
-
 " Resize panes more than one line at a time
 nnoremap <silent> + :exe "resize " . (winheight(0) * 5/4)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 3/4)<CR>
+
+iabbrev pyta import pytest<cr>@pytest.mark.a 
 
 "" -----------------------------------------------------------------------------
 "   Plugin Settings
@@ -99,6 +100,10 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 3/4)<CR>
 nnoremap <leader>a :Ack! 
 nnoremap <leader>A :AckFromSearch<CR>
 
+" SimpylFold
+let g:SimpylFold_docstring_preview = 1
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
