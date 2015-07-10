@@ -1,0 +1,9 @@
+*.swp
+*.pyc
+.idea
+.vagrant
+.DS_Store
+
+tags
+pylint-report.html
+sourceme
