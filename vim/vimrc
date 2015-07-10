@@ -49,9 +49,6 @@ set incsearch
 
 set tabpagemax=128
 
-set winheight=30
-set winminheight=5
-
 " See `:h Y`
 nnoremap Y y$
 
@@ -91,6 +88,16 @@ nnoremap <silent> + :exe "resize " . (winheight(0) * 5/4)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 3/4)<CR>
 
 iabbrev pyta import pytest<cr>@pytest.mark.a 
+
+if !exists("*OpenTestFile")
+    " Implement filetype specific in `./autoload/ft/open_test_file.vim`
+    " TODO: Remove need to duplicate mapping in ft file
+    function OpenTestFile()
+        echo "Not Implemented"
+    endfunction
+endif
+
+nnoremap <leader>ot :call OpenTestFile()<CR>
 
 "" -----------------------------------------------------------------------------
 "   Plugin Settings
