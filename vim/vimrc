@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mileszs/ack.vim'                " depends on system ack
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'airblade/vim-gitgutter'
 
