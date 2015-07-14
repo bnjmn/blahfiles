@@ -17,6 +17,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 filetype plugin indent on               " required
@@ -72,6 +73,7 @@ nnoremap <leader>tsp :set spell!<CR>
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.jy set filetype=python
+autocmd BufNewFile,BufReadPost *.eco set filetype=html
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " Window Movement Mappings - Make switching windows easier
