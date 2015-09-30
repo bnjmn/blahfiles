@@ -19,11 +19,15 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kchmck/vim-coffee-script'
 
+Plugin 'Valloric/YouCompleteMe'         " build libs with
+                                        " `./bundle/YouCompleteMe/install.py`
+Plugin 'tpope/vim-eunuch'
+
 call vundle#end()
 filetype plugin indent on               " required
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 colorscheme pablo
 set background=dark
@@ -63,6 +67,9 @@ command! WQ wq
 command! W w
 command! Q q
 
+" no need for Ex mode
+nnoremap Q <Nop> 
+
 " Quickly (t)oggle common settings
 nnoremap <silent> <leader>th :set hlsearch!<CR>
 nnoremap <leader>tl :set list!<CR>
@@ -74,6 +81,7 @@ nnoremap <leader>tsp :set spell!<CR>
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.jy set filetype=python
 autocmd BufNewFile,BufReadPost *.eco set filetype=html
+
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " Window Movement Mappings - Make switching windows easier
@@ -82,15 +90,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Resize window
-nnoremap <silent> <leader>> :vertical resize +10<CR>
-nnoremap <silent> <leader>< :vertical resize -10<CR>
-
 " Resize panes more than one line at a time
-nnoremap <silent> + :exe "resize " . (winheight(0) * 5/4)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 3/4)<CR>
+nnoremap <silent> + :exe "resize " . (winheight(0) * 10/9)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 9/10)<CR>
+nnoremap <silent> > :exe "vertical resize " . (winwidth(0) * 10/9)<CR>
+nnoremap <silent> < :exe "vertical resize " . (winwidth(0) * 9/10)<CR>
 
+" quick python helpers
 iabbrev pyta import pytest<cr>@pytest.mark.a 
+iabbrev pytdb import ipdb; ipdb.set_trace()
 
 if !exists("*OpenTestFile")
     " Implement filetype specific in `./autoload/ft/open_test_file.vim`
