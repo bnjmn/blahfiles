@@ -22,14 +22,19 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'Valloric/YouCompleteMe'         " build libs with
                                         " `./bundle/YouCompleteMe/install.py`
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-vinegar'
+Plugin 'gilgigilgil/anderson.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'groenewege/vim-less'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'sjl/gundo.vim'
 
 call vundle#end()
 filetype plugin indent on               " required
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-colorscheme pablo
+colorscheme solarized
 set background=dark
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -43,6 +48,11 @@ set backspace=indent,eol,start
 syntax on
 set autoindent
 set smartindent
+
+set showmatch
+"set lazyredraw
+nnoremap j gj
+nnoremap k gk
 
 set number
 set ruler
@@ -60,13 +70,13 @@ nnoremap Y y$
 
 " Save files faster
 nnoremap <leader>w :w<CR>
+nnoremap <leader>wa :wall<CR>
 
 " Fix quick write/quit
 command! Wq wq
 command! WQ wq
 command! W w
 command! Q q
-
 " no need for Ex mode
 nnoremap Q <Nop> 
 
@@ -122,6 +132,10 @@ nnoremap <leader>A :AckFromSearch<CR>
 let g:SimpylFold_docstring_preview = 1
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+
+" YouCompleteMe
+nnoremap <silent> <leader>g  :YcmCompleter GoTo<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

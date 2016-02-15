@@ -7,6 +7,7 @@ function! ft#open_test_file#OpenPythonTestFile()
     let dirname=expand('%:h')
 
     execute 'rightbelow vsplit ' . "tests/" . dirname . "/test_" . filename
+
 endfunction
 
 

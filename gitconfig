@@ -8,8 +8,9 @@
   co = checkout
   cia = commit -u --amend
   fa = fetch --all
+  cp = cherry-pick
 
-  l = log --graph --decorate --pretty=oneline --abbrev-commit -n 22
+  l = log --graph --decorate --pretty=oneline --abbrev-commit -n 23
   ll = log --pretty=oneline --abbrev-commit --max-count=15
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
