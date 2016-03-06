@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
-
-# ----------------------------------------------------------------------
-#  PATH
-#       See PATH MANIPULATION FUNCTIONS for more
-# ----------------------------------------------------------------------
+# bash run commands
 
 get_dotfiles_dir () {
     # http://stackoverflow.com/a/246128
     local source="${BASH_SOURCE[1]}"
     while [ -h "$source" ]; do
-      local dir="$( cd -P "$( dirname "$source" )" && pwd )"
-      local source="$(readlink "$source")"
-      [[ $source != /* ]] && source="$dir/$source"
+        local dir="$( cd -P "$( dirname "$source" )" && pwd )"
+        local source="$(readlink "$source")"
+        [[ $source != /* ]] && source="$dir/$source"
     done
     local bash_dir="$( cd -P "$( dirname "$source" )" && pwd )"
 
@@ -22,12 +18,20 @@ get_dotfiles_dir () {
 DOTFILES_DIR=$(get_dotfiles_dir)
 
 PATH=/usr/local/bin:$PATH
-#PATH="$DOTFILES_DIR/bin":$PATH
+PATH="$DOTFILES_DIR/bin":$PATH
 
 # heroku toolbelt, stop adding yourself please
 if [ -d /usr/local/heroku/bin ]; then
     PATH="/usr/local/heroku/bin:$PATH"
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+alias npm-exec='PATH=$(npm bin):$PATH'
+
 
 # If virtualenvwrapper is installed
 if [[ "$(type -P virtualenvwrapper.sh)" ]]; then
@@ -36,44 +40,46 @@ if [[ "$(type -P virtualenvwrapper.sh)" ]]; then
     export PROJECT_HOME=$HOME/code
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+# Make virtualenv list brief
+alias lsvirtualenv='lsvirtualenv -b'
+
+# GRUNT Work
+# TODO: check for grunt first
+eval "$(grunt --completion=bash)"
+
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+export NVM_DIR=~/.nvm
+
+# TODO: don't depend on brew
+source $(brew --prefix nvm)/nvm.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # If not running interactively, exit here
 [ -z "$PS1" ] && return
 
-# JAVA
-if [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-    export IDEA_JDK="$JAVA_HOME"
-fi
 
-# ----------------------------------------------------------------------
-#  SHELL OPTIONS
-# ----------------------------------------------------------------------
 
 shopt -s histappend     # append history rather than overwrite
 shopt -s checkwinsize   # update LINES and COLUMNS after each command
-# shopt -s globstar   # `**` match all recusively, only bash ver. >= 4
-
-### History ###
+# `**` match all recusively, only bash ver. >= 4, thanks OS X
+[ ! "${BASH_VERSINFO}" -lt 4 ] && shopt -s globstar
 
 HISTSIZE=100000
 HISTFILESIZE=200000
 HISTCONTROL=ignoreboth
 
-# Up and down search based on what was typed in so far
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-
-
-# ----------------------------------------------------------------------
-#  EDITING
-# ----------------------------------------------------------------------
 
 # set command line to vi mode (default is emacs)
 set -o vi
 export EDITOR=vim
 export VISUAL="$EDITOR"
+# TODO: check for nvim 
 alias vim="nvim"
+alias vi='vim'
 
 # Bash Completion is quite helpful when available
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
@@ -120,17 +126,14 @@ alias ll.='ls -dlF .*'  # list long hidden
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
+# TODO: this doesn't work on mac
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Make virtualenv list brief
-alias lsvirtualenv='lsvirtualenv -b'
-
 # Quick source bashrc
-alias srcbash='. ~/.bashrc && echo "BASHRC sourced"'
+alias srcbash='. $HOME/.bashrc && echo "BASHRC sourced"'
 
 # Remove all symbolic links in current directory
 #alias rmsymlinks='find . -maxdepth 1 -type l -exec rm {} \;'
-
 
 # Recursively rm vim swp files with confirmation
 alias remove-swp-files='find . -name *.swp -exec rm -i '{}' \;'
@@ -139,7 +142,6 @@ alias remove-swp-files='find . -name *.swp -exec rm -i '{}' \;'
 #alias mv='mv --interactive'
 alias mv='mv -i'
 
-alias vi='vim'
 
 # --------------------------------------------------------------------
 # PATH MANIPULATION FUNCTIONS - by Ryan Tomayko
@@ -234,13 +236,6 @@ test -n "$PS1" &&
 prompt_color
 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-alias npm-exec='PATH=$(npm bin):$PATH'
-
 
 
 
@@ -249,8 +244,10 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 
 alias ls='gls --group-directories-first --color=auto'
 
+# up the user-system-wide resource limit
 ulimit -n 1024
 
+# TODO: remove dep on brew
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
@@ -263,16 +260,8 @@ export LSCOLORS=ExGxFxDxCxHxHxCbCeEbEb
 export LC_CTYPE=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
+# Up and down search based on what was typed in so far
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
-# GRUNT Work
-eval "$(grunt --completion=bash)"
-
-PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+echo "BLAHFILES"
