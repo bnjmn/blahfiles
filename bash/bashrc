@@ -238,7 +238,12 @@ test -n "$PS1" &&
 prompt_color
 
 
-[[ "$OSTYPE" =~ ^darwin ]] && source "$DOTFILES_DIR/bash/bash_osx_rc"
+[[ "$OSTYPE" =~ ^darwin ]] && source "$DOTFILES_DIR/bash/bashrc_osx"
+
+# TODO: remove dep on brew
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 
 # Up and down search based on what was typed in so far
 bind '"\e[A": history-search-backward'
