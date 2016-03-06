@@ -47,7 +47,7 @@ alias lsvirtualenv='lsvirtualenv -b'
 # TODO: check for grunt first
 eval "$(grunt --completion=bash)"
 
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source "$HOME/.travis/travis.sh"
 
 export NVM_DIR=~/.nvm
 
@@ -213,6 +213,7 @@ prompt_compact() {
     PS2="> "
 }
 
+# TODO: Check for `__git_ps1` before running, sometimes isn't there
 GIT_PS1_SHOWDIRTYSTATE=1
 PS1_PWD_MAX=15
 prompt_color() {
@@ -223,6 +224,7 @@ prompt_color() {
     PS2="> "
 }
 
+# TODO: Make this ubuntu/debian specific
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -236,32 +238,8 @@ test -n "$PS1" &&
 prompt_color
 
 
-
-
-
-### Experiments in OSX, or leave
-[[ "$OSTYPE" =~ ^darwin ]] || return 1
-
-alias ls='gls --group-directories-first --color=auto'
-
-# up the user-system-wide resource limit
-ulimit -n 1024
-
-# TODO: remove dep on brew
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-
-export TERM=xterm-256color
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-export CLICOLOR=1
-
-export LSCOLORS=ExGxFxDxCxHxHxCbCeEbEb
-export LC_CTYPE=en_US.utf-8
-export LC_ALL=en_US.utf-8
+[[ "$OSTYPE" =~ ^darwin ]] && source "$DOTFILES_DIR/bash/bash_osx_rc"
 
 # Up and down search based on what was typed in so far
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
-
-echo "BLAHFILES"
