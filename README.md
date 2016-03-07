@@ -8,6 +8,5 @@ blah blah blah
 
 ```bash
 git clone git@github.com:bnjmn/blahfiles.git
-cd blahfiles
-. install.sh
+cd blahfiles && . install.sh
 ```

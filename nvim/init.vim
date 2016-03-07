@@ -25,6 +25,14 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'lepture/vim-jinja'
 Plug 'maksimr/vim-jsbeautify'
 
+Plug 'benekastah/neomake'
+Plug 'Arkham/vim-quickfixdo'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-abolish'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 
 " Add plugins to &runtimepath
 call plug#end()
