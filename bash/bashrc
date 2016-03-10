@@ -17,50 +17,42 @@ get_dotfiles_dir () {
 
 DOTFILES_DIR=$(get_dotfiles_dir)
 
-PATH=/usr/local/bin:$PATH
-PATH="$DOTFILES_DIR/bin":$PATH
+PATH="/usr/local/bin:$PATH"
+PATH="$PATH:$DOTFILES_DIR/bin"
 
 # heroku toolbelt, stop adding yourself please
 if [ -d /usr/local/heroku/bin ]; then
-    PATH="/usr/local/heroku/bin:$PATH"
+    PATH="$PATH:/usr/local/heroku/bin"
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[[ "$OSTYPE" =~ ^darwin ]] && source $(brew --prefix nvm)/nvm.sh
 
 alias npm-exec='PATH=$(npm bin):$PATH'
-
 
 # If virtualenvwrapper is installed
 if [[ "$(type -P virtualenvwrapper.sh)" ]]; then
     # virtualenvwrapper for non-login shells as well
-    export WORKON_HOME=$HOME/.venvs
-    export PROJECT_HOME=$HOME/code
+    export WORKON_HOME="$HOME/.venvs"
+    export PROJECT_HOME="$HOME/code"
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 # Make virtualenv list brief
 alias lsvirtualenv='lsvirtualenv -b'
 
 # GRUNT Work
-# TODO: check for grunt first
-eval "$(grunt --completion=bash)"
+if [[ "$(type -P grunt)" ]]; then eval "$(grunt --completion=bash)"; fi
 
 [ -f $HOME/.travis/travis.sh ] && source "$HOME/.travis/travis.sh"
 
-export NVM_DIR=~/.nvm
-
-# TODO: don't depend on brew
-source $(brew --prefix nvm)/nvm.sh
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # If not running interactively, exit here
 [ -z "$PS1" ] && return
-
 
 
 shopt -s histappend     # append history rather than overwrite
@@ -77,13 +69,12 @@ HISTCONTROL=ignoreboth
 set -o vi
 export EDITOR=vim
 export VISUAL="$EDITOR"
-# TODO: check for nvim 
-alias vim="nvim"
+
+if [[ "$(type -P nvim)" ]]; then alias vim="nvim"; fi
 alias vi='vim'
 
-# Bash Completion is quite helpful when available
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+    source /etc/bash_completion
 fi
 
 PIP_REQUIRE_VIRTUALENV=true
@@ -239,11 +230,6 @@ prompt_color
 
 
 [[ "$OSTYPE" =~ ^darwin ]] && source "$DOTFILES_DIR/bash/bashrc_osx"
-
-# TODO: remove dep on brew
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
 
 # Up and down search based on what was typed in so far
 bind '"\e[A": history-search-backward'
