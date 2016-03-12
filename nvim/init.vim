@@ -2,8 +2,6 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Make sure you use single quotes
-
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'                " depends on system ack
@@ -33,10 +31,8 @@ Plug 'tpope/vim-abolish'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-
 " Add plugins to &runtimepath
 call plug#end()
-
 
 
 set background=dark
