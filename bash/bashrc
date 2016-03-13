@@ -64,14 +64,16 @@ HISTSIZE=100000
 HISTFILESIZE=200000
 HISTCONTROL=ignoreboth
 
-
-# set command line to vi mode (default is emacs)
+# set command line to vi mode
 set -o vi
+alias vi='vim'
 export EDITOR=vim
+if [[ "$(type -P nvim)" ]]; then
+    alias vim="nvim"
+    export EDITOR=nvim
+fi
 export VISUAL="$EDITOR"
 
-if [[ "$(type -P nvim)" ]]; then alias vim="nvim"; fi
-alias vi='vim'
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     source /etc/bash_completion
@@ -225,8 +227,7 @@ prompt_old() {
 }
 
 # Use the color prompt by default when interactive
-test -n "$PS1" &&
-prompt_color
+test -n "$PS1" && prompt_color
 
 
 [[ "$OSTYPE" =~ ^darwin ]] && source "$DOTFILES_DIR/bash/bashrc_osx"
