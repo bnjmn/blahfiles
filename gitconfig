@@ -17,7 +17,8 @@
 
   pull = pull --ff --ff-only
 
-  nuke = "!f(){ git branch -D \"$1\" && git push origin :\"$1\"; }; f"
+  nuke = "!f(){ git branch -d \"$1\" && git push origin :\"$1\"; }; f"
+  branch-smell = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - (%(color:green)%(committerdate:relative)%(color:reset))'
 
 [core]
   excludesfile = ~/.gitignore_global
