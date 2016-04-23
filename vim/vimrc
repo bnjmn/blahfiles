@@ -142,7 +142,10 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 " YouCompleteMe
 nnoremap <silent> <leader>g  :YcmCompleter GoTo<CR>
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" Close scratch preview
+autocmd CompleteDone * pclose
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

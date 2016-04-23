@@ -141,6 +141,17 @@ nnoremap <leader>ot :call OpenTestFile()<CR>
 nnoremap <leader>a :Ack! 
 nnoremap <leader>A :AckFromSearch<CR>
 
+" YouCompleteMe
+"nnoremap <silent> <leader>g  :YcmCompleter GoTo<CR>
+
+" Close scratch preview
+"autocmd CompleteDone * pclose
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"nnoremap <leader>pc :pclose<CR>
+
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 if filereadable(expand($HOME . "/.nvimrc.local"))
   source ~/.nvimrc.local
 endif
