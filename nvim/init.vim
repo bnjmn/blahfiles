@@ -141,4 +141,8 @@ if filereadable(expand($HOME . "/.nvimrc.local"))
 endif
 
 
+let g:NERDCustomDelimiters = {
+  \ 'jinja': { 'left': '{#', 'right': '#}' },
+  \ }
+
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set ft=jinja
