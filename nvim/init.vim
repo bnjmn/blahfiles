@@ -1,6 +1,6 @@
 " N(eo)VIMRC
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(expand('%:p:h') . '/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'

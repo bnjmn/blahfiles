@@ -1,36 +1,42 @@
 " VIMRC
 
 "" -----------------------------------------------------------------------------
-"   Vundle (Settings) - Vim Plugin Manager
+"   PLUG (Settings) - Vim Plugin Manager
 "" -----------------------------------------------------------------------------
 
-set nocompatible                        " be iMproved, required
-filetype off                            " required (for vundle)
+call plug#begin(expand('%:p:h') . '/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'                " depends on system ack
+Plug 'tpope/vim-surround'
+Plug 'tmhedberg/SimpylFold'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+Plug 'jmcantrell/vim-virtualenv'
 
-Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'mileszs/ack.vim'                " depends on system ack
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'kchmck/vim-coffee-script'
+Plug 'groenewege/vim-less'
+Plug 'kchmck/vim-coffee-script'
 
-Plugin 'Valloric/YouCompleteMe'         " build libs with
-                                        " `./bundle/YouCompleteMe/install.py`
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-vinegar'
-Plugin 'gilgigilgil/anderson.vim'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'groenewege/vim-less'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'sjl/gundo.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'gilgigilgil/anderson.vim'
+Plug 'sjl/gundo.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
-call vundle#end()
-filetype plugin indent on               " required
+Plug 'lepture/vim-jinja'
+Plug 'maksimr/vim-jsbeautify'
+
+Plug 'Arkham/vim-quickfixdo'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-abolish'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Add plugins to &runtimepath
+call plug#end()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
