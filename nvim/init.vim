@@ -82,16 +82,20 @@ command! Q q
 nnoremap Q <Nop> 
 
 " Quickly (t)oggle common settings
-nnoremap <silent> <leader>th :set hlsearch!<CR>
-nnoremap <leader>tl :set list!<CR>
-nnoremap <leader>tn :set number!<CR>
-nnoremap <leader>tp :set paste!<CR>
-nnoremap <leader>tw :set wrap!<CR>
-nnoremap <leader>tsp :set spell!<CR>
+nnoremap <silent> <leader>th :set hlsearch!<CR>:set hlsearch?<CR>
+nnoremap <leader>tl :set list!<CR>:set list?<CR>
+nnoremap <leader>tn :set number!<CR>:set number?<CR>
+nnoremap <leader>tp :set paste!<CR>:set paste?<CR>
+nnoremap <leader>tw :set wrap!<CR>:set wrap?<CR>
+nnoremap <leader>tsp :set spell!<CR>:set spell?<CR>
+" fix window height/width, keeps other windows from messing with it
+nnoremap <leader>tfw :set wfh!<CR>:set wfw!<CR>:set winfixwidth?<CR>
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.jy set filetype=python
 autocmd BufNewFile,BufReadPost *.eco set filetype=html
+
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set ft=jinja
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -144,5 +148,3 @@ endif
 let g:NERDCustomDelimiters = {
   \ 'jinja': { 'left': '{#', 'right': '#}' },
   \ }
-
-au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set ft=jinja
