@@ -647,9 +647,9 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>454 1205 384 129 0 0 2560 1578 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 888 620 392 0 0 2560 1577 </string>
+	<string>970 889 620 392 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 14 1425 863 0 0 1440 877 </string>
+	<string>0 14 2559 1563 0 0 2560 1577 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 4 1440 873 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2151,8 +2151,10 @@
 			<string>/Users/bnjmn</string>
 		</dict>
 	</array>
+	<key>NoSyncInstallationId</key>
+	<string>D732C8B1-8335-44B8-B379-A6EFC8F2D3FE</string>
 	<key>NoSyncLastTipTime</key>
-	<real>481994923.13041502</real>
+	<real>485875229.94207299</real>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
@@ -2162,7 +2164,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453509119.016487</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>477462250.692532</real>
+	<real>484686132.96862501</real>
 	<key>NoSyncTipsToNotShow</key>
 	<array>
 		<string>000</string>
@@ -2205,6 +2207,26 @@
 		<string>0036</string>
 		<string>0037</string>
 		<string>0038</string>
+		<string>0039</string>
+		<string>0040</string>
+		<string>0041</string>
+		<string>0042</string>
+		<string>0043</string>
+		<string>0044</string>
+		<string>0045</string>
+		<string>0046</string>
+		<string>0047</string>
+		<string>0048</string>
+		<string>0049</string>
+		<string>0050</string>
+		<string>0051</string>
+		<string>0052</string>
+		<string>0053</string>
+		<string>0054</string>
+		<string>0055</string>
+		<string>0056</string>
+		<string>0057</string>
+		<string>0058</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -2270,13 +2292,15 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml?shard=16</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-04-08T13:47:55Z</date>
+	<date>2016-05-25T04:12:26Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
+	<key>Selection Respects Soft Boundaries</key>
+	<true/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -2329,6 +2353,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160313</string>
+	<string>2.9.20160510</string>
 </dict>
 </plist>
