@@ -69,7 +69,7 @@ set -o vi
 alias vi='vim'
 export EDITOR=vim
 if [[ "$(type -P nvim)" ]]; then
-    alias vim="nvim"
+    alias vi='nvim'
     export EDITOR=nvim
 fi
 export VISUAL="$EDITOR"

@@ -1,5 +1,6 @@
 " N(eo)VIMRC
 
+"call plug#begin(expand('%:p:h') . '/plugged')
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-fugitive'
