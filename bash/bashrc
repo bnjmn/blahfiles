@@ -235,3 +235,6 @@ test -n "$PS1" && prompt_color
 # Up and down search based on what was typed in so far
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+
+
+export HOMEBREW_GITHUB_API_TOKEN="37c47eddffa48b00f32e7900246a7bc1bc6680fe"
