@@ -238,3 +238,5 @@ bind '"\e[B": history-search-forward'
 
 
 export HOMEBREW_GITHUB_API_TOKEN="37c47eddffa48b00f32e7900246a7bc1bc6680fe"
+
+source ~/.iterm2_shell_integration.`basename $SHELL`
