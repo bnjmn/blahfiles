@@ -17,7 +17,7 @@ get_dotfiles_dir () {
 
 DOTFILES_DIR=$(get_dotfiles_dir)
 
-PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 PATH="$PATH:$DOTFILES_DIR/bin"
 
 # heroku toolbelt, stop adding yourself please
