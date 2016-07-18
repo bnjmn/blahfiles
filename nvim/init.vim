@@ -1,5 +1,10 @@
 " N(eo)VIMRC
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+
 "call plug#begin(expand('%:p:h') . '/plugged')
 call plug#begin('~/.config/nvim/plugged')
 
@@ -19,7 +24,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gilgigilgil/anderson.vim'
 Plug 'sjl/gundo.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 Plug 'lepture/vim-jinja'
 Plug 'maksimr/vim-jsbeautify'
@@ -31,6 +36,8 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -156,7 +163,14 @@ if filereadable(expand($HOME . "/.nvimrc.local"))
   source ~/.nvimrc.local
 endif
 
-
 let g:NERDCustomDelimiters = {
   \ 'jinja': { 'left': '{#', 'right': '#}' },
   \ }
+
+
+let g:deoplete#enable_at_startup = 1
+
+
+" Tab navigation
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<C-k>"
