@@ -9,3 +9,5 @@ pylint-report.html
 sourceme
 sourceme.sh
 node_modules/
+
+*.egg-info/
