@@ -6,3 +6,4 @@ nvim/.netrwhist
 nvim/plugged
 nvim/autoload/plug.vim*
 nvim/spell/
+nvim/.init.vim-rplugin~
