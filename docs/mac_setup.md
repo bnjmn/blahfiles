@@ -21,3 +21,17 @@ Login with nick on freenode with
 ```
 /msg NickServ IDENTIFY bnjmn password
 ```
+
+
+### Firefox
+
+Using different profiles.
+
+Enable different add-ons on different machines/profiles.
+Set this to true
+https://wiki.mozilla.org/Services/Sync/Addon_Sync#Can_I_have_different_enabled_states_on_different_machines.3F
+
+and then you should be able to enable or disable add-ons (like themes) without affecting other profiles.
+
+
+Not sure this actually worked. Need to test with restart.
