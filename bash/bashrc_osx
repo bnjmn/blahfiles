@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bash run commands for OS X
+is_osx || return 1
 
+# req: brew install coreutils
 alias ls='gls --group-directories-first --color=auto'
 
 # up the user-system-wide resource limit
@@ -14,6 +16,27 @@ export LSCOLORS=ExGxFxDxCxHxHxCbCeEbEb
 export LC_CTYPE=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[[ "$OSTYPE" =~ ^darwin ]] && source $(brew --prefix nvm)/nvm.sh
+alias npm-exec='PATH=$(npm bin):$PATH'
+
+if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
+	PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+fi
+
+# heroku toolbelt, stop adding yourself please
+if [ -d /usr/local/heroku/bin ]; then
+    PATH="$PATH:/usr/local/heroku/bin"
+fi
+
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     source `brew --prefix`/etc/bash_completion
 fi
+
+# req: sudo gem install terminal-notifier
+# use: sleep 10; alert
+alias alert='terminal-notifier -title "Terminal" -message "Done with command"'
