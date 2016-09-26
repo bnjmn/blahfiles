@@ -1,45 +1,36 @@
 " N(eo)VIM run commands
 " by bnjmn
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
 let g:plug_home = expand('<sfile>:p:h') . '/plugged'
 call plug#begin()
 
+" tpope
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mileszs/ack.vim'                " depends on system ack
 Plug 'tpope/vim-surround'
-Plug 'tmhedberg/SimpylFold'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-vinegar'
-Plug 'jmcantrell/vim-virtualenv'
-
-Plug 'groenewege/vim-less'
-Plug 'kchmck/vim-coffee-script'
-
-Plug 'altercation/vim-colors-solarized'
-Plug 'gilgigilgil/anderson.vim'
-Plug 'sjl/gundo.vim'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-
-Plug 'lepture/vim-jinja'
-Plug 'maksimr/vim-jsbeautify'
-
-Plug 'benekastah/neomake'
-Plug 'Arkham/vim-quickfixdo'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 
+Plug 'scrooloose/nerdcommenter'
+Plug 'sjl/gundo.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'Arkham/vim-quickfixdo'
+Plug 'mileszs/ack.vim'                        " depends on system ack
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+" colors
+Plug 'altercation/vim-colors-solarized'
+Plug 'gilgigilgil/anderson.vim'
 
-" Add plugins to &runtimepath
+" syntax
+Plug 'lepture/vim-jinja'
+Plug 'groenewege/vim-less'
+Plug 'kchmck/vim-coffee-script'
+
 call plug#end()
 
 
@@ -148,9 +139,6 @@ nnoremap <leader>ot :call OpenTestFile()<CR>
 " Ack!
 nnoremap <leader>a :Ack! 
 nnoremap <leader>A :AckFromSearch<CR>
-
-" YouCompleteMe
-"nnoremap <silent> <leader>g  :YcmCompleter GoTo<CR>
 
 " Close scratch preview
 "autocmd CompleteDone * pclose
