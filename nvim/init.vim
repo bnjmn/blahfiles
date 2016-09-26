@@ -1,12 +1,12 @@
-" N(eo)VIMRC
+" N(eo)VIM run commands
+" by bnjmn
 
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 
-
-"call plug#begin(expand('%:p:h') . '/plugged')
-call plug#begin('~/.config/nvim/plugged')
+let g:plug_home = expand('<sfile>:p:h') . '/plugged'
+call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
