@@ -13,6 +13,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 
+" others
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim'
 Plug 'airblade/vim-gitgutter'
@@ -23,6 +24,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " colors
+Plug 'ap/vim-css-color'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gilgigilgil/anderson.vim'
 
@@ -33,11 +35,13 @@ Plug 'kchmck/vim-coffee-script'
 
 call plug#end()
 
-
-set background=dark
-"colorscheme solarized
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
+
+set background=dark
+if has#colorscheme('solarized')
+    colorscheme solarized
+endif
 
 set tabstop=4
 set shiftwidth=4
@@ -158,7 +162,6 @@ let g:NERDCustomDelimiters = {
 
 
 let g:deoplete#enable_at_startup = 1
-
 
 " Tab navigation
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<C-j>"
