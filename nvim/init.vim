@@ -2,7 +2,11 @@
 " by bnjmn
 
 
-let g:plug_home = expand('<sfile>:p:h') . '/plugged'
+if has('nvim')
+    let g:plug_home = expand('<sfile>:p:h') . '/plugged'
+else
+    let g:plug_home = expand('<sfile>:p:h') . '/pluggedVim'
+endif
 call plug#begin()
 
 " tpope
@@ -74,10 +78,6 @@ endfunction"}}}
 "autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "nnoremap <leader>pc :pclose<CR>
 
-
-if filereadable(expand($HOME . "/.nvimrc.local"))
-  source ~/.nvimrc.local
-endif
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
