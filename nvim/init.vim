@@ -1,6 +1,7 @@
 " N(eo)VIM run commands
 " by bnjmn
 
+
 let g:plug_home = expand('<sfile>:p:h') . '/plugged'
 call plug#begin()
 
@@ -21,7 +22,9 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'Arkham/vim-quickfixdo'
 Plug 'mileszs/ack.vim'                        " depends on system ack
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 
 " colors
 Plug 'ap/vim-css-color'
@@ -37,6 +40,44 @@ Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
+""""""""""""""""""""""""""
+" PLUGIN Settings
+""""""""""""""""""""""""""
+
+" Ack!
+nnoremap <leader>a :Ack! 
+nnoremap <leader>A :AckFromSearch<CR>
+
+
+" NerdCommenter
+let g:NERDCustomDelimiters = {
+  \ 'jinja': { 'left': '{#', 'right': '#}' },
+  \ }
+
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+" deoplete Tab navigation
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" Close scratch preview
+"autocmd CompleteDone * pclose
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"nnoremap <leader>pc :pclose<CR>
+
+
+if filereadable(expand($HOME . "/.nvimrc.local"))
+  source ~/.nvimrc.local
+endif
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -44,6 +85,8 @@ let maplocalleader = "\\"
 set background=dark
 if has#colorscheme('solarized')
     colorscheme solarized
+else
+    colorscheme pablo
 endif
 
 set tabstop=4
@@ -78,6 +121,7 @@ nnoremap Y y$
 
 " Save files faster
 nnoremap <leader>w :w<CR>
+" to the window, to the
 nnoremap <leader>wa :wall<CR>
 
 " Fix quick write/quit
@@ -101,8 +145,7 @@ nnoremap <leader>tfw :set wfh!<CR>:set wfw!<CR>:set winfixwidth?<CR>
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.jy set filetype=python
 autocmd BufNewFile,BufReadPost *.eco set filetype=html
-
-au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set ft=jinja
+autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set filetype=jinja
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -112,12 +155,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
+if has('nvim')
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+    "tnoremap <Esc> <C-\><C-n>
+endif
 
-"tnoremap <Esc> <C-\><C-n>
 
 " Resize panes more than one line at a time
 nnoremap <silent> + :exe "resize " . (winheight(0) * 10/9)<CR>
@@ -139,39 +184,3 @@ if !exists("*OpenTestFile")
 endif
 
 nnoremap <leader>ot :call OpenTestFile()<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Ack!
-nnoremap <leader>a :Ack! 
-nnoremap <leader>A :AckFromSearch<CR>
-
-" Close scratch preview
-"autocmd CompleteDone * pclose
-"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"nnoremap <leader>pc :pclose<CR>
-
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-if filereadable(expand($HOME . "/.nvimrc.local"))
-  source ~/.nvimrc.local
-endif
-
-let g:NERDCustomDelimiters = {
-  \ 'jinja': { 'left': '{#', 'right': '#}' },
-  \ }
-
-
-let g:deoplete#enable_at_startup = 1
-
-" deoplete Tab navigation
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
