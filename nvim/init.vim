@@ -170,10 +170,6 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 9/10)<CR>
 nnoremap <silent> > :exe "vertical resize " . (winwidth(0) * 10/9)<CR>
 nnoremap <silent> < :exe "vertical resize " . (winwidth(0) * 9/10)<CR>
 
-" quick python helpers
-iabbrev pyta import pytest<cr>@pytest.mark.a 
-iabbrev pytdb import ipdb; ipdb.set_trace()
-
 
 if !exists("*OpenTestFile")
     " Implement filetype specific in `./autoload/ft/open_test_file.vim`
