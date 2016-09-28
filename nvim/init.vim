@@ -32,8 +32,11 @@ Plug 'gilgigilgil/anderson.vim'
 Plug 'lepture/vim-jinja'
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
+
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
@@ -163,6 +166,12 @@ let g:NERDCustomDelimiters = {
 
 let g:deoplete#enable_at_startup = 1
 
-" Tab navigation
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<C-k>"
+" deoplete Tab navigation
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
