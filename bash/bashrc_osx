@@ -24,6 +24,9 @@ export NVM_DIR="$HOME/.nvm"
 [[ "$OSTYPE" =~ ^darwin ]] && source $(brew --prefix nvm)/nvm.sh
 alias npm-exec='PATH=$(npm bin):$PATH'
 
+NPM_COMPLETION="$DOTFILES_DIR/bash/npm-completion.sh"
+[ -f "$NPM_COMPLETION" ] && source "$NPM_COMPLETION"
+
 if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
 	PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 fi
