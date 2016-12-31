@@ -24,12 +24,17 @@ PATH="$PATH:$DOTFILES_DIR/bin"
 # PYTHON
 ################################################
 
-if [[ "$(type -P virtualenvwrapper.sh)" ]]; then
-    # virtualenvwrapper for non-login shells as well
-    export WORKON_HOME="$HOME/.venvs"
-    export PROJECT_HOME="$HOME/code"
-    source /usr/local/bin/virtualenvwrapper.sh
+if [[ "$(type -P pyenv)" ]]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
+
+#if [[ "$(type -P virtualenvwrapper.sh)" ]]; then
+    ## virtualenvwrapper for non-login shells as well
+    #export WORKON_HOME="$HOME/.venvs"
+    #export PROJECT_HOME="$HOME/code"
+    #source /usr/local/bin/virtualenvwrapper.sh
+#fi
 # Make virtualenv list brief
 alias lsvirtualenv='lsvirtualenv -b'
 
