@@ -28,6 +28,7 @@ Plug 'mileszs/ack.vim'                        " depends on system ack
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-jedi'
 endif
 
 " colors
@@ -41,8 +42,12 @@ Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'stephpy/vim-yaml'
 
 call plug#end()
+
+let mapleader = "\<Space>"
+let maplocalleader = "\\"
 
 """"""""""""""""""""""""""
 " PLUGIN Settings
@@ -78,9 +83,6 @@ endfunction"}}}
 "autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "nnoremap <leader>pc :pclose<CR>
 
-
-let mapleader = "\<Space>"
-let maplocalleader = "\\"
 
 set background=dark
 if has#colorscheme('solarized')
