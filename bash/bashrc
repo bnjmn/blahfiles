@@ -19,30 +19,23 @@ DOTFILES_DIR=$(get_dotfiles_dir)
 source "$DOTFILES_DIR/bash/func_path.sh"
 PATH=$(puniq $PATH)
 
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:$PATH"
 PATH="$PATH:$DOTFILES_DIR/bin"
+
 
 ################################################
 # PYTHON
 ################################################
 
 if [[ "$(type -P pyenv)" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
-    export PYENV_ROOT="$HOME/.pyenv"
 fi
 
-#if [[ "$(type -P virtualenvwrapper.sh)" ]]; then
-    ## virtualenvwrapper for non-login shells as well
-    #export WORKON_HOME="$HOME/.venvs"
-    #export PROJECT_HOME="$HOME/code"
-    #source /usr/local/bin/virtualenvwrapper.sh
-#fi
-# Make virtualenv list brief
-alias lsvirtualenv='lsvirtualenv -b'
-
-PIP_REQUIRE_VIRTUALENV=true
-PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 _pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
                    COMP_CWORD=$COMP_CWORD \
