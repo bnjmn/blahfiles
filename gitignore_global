@@ -1,8 +1,11 @@
 *.swp
 *.pyc
+*.sqlite
+.coverage
 .idea
 .vagrant
 .DS_Store
+.python-version
 
 tags
 pylint-report.html
