@@ -17,6 +17,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-obsession'
 
 " others
 Plug 'scrooloose/nerdcommenter'
@@ -29,6 +30,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-jedi'
+    Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+    Plug 'neomake/neomake'
 endif
 
 " colors
@@ -48,6 +53,10 @@ call plug#end()
 
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
+
+" See docs/python_setup.md (must create virtualenvs)
+let g:python_host_prog = $PYENV_ROOT . '/versions/neovim2/bin/python'
+let g:python3_host_prog = $PYENV_ROOT . '/versions/neovim3/bin/python'
 
 """"""""""""""""""""""""""
 " PLUGIN Settings
@@ -80,9 +89,19 @@ endfunction"}}}
 " Close scratch preview
 "autocmd CompleteDone * pclose
 "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-"nnoremap <leader>pc :pclose<CR>
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+nnoremap <leader>pc :pclose<CR>
 
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
+
+
+""""""""""""""""""""""""""
+" GENERAL Settings
+""""""""""""""""""""""""""
 
 set background=dark
 if has#colorscheme('solarized')
