@@ -1,7 +1,7 @@
 " Folding
-set foldmethod=indent
-set foldlevelstart=1
-set foldnestmax=5
+"set foldmethod=indent
+"set foldlevelstart=1
+"set foldnestmax=5
 
 setlocal tabstop=4
 setlocal shiftwidth=4
