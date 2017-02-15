@@ -9,6 +9,7 @@
   cia = commit -u --amend
   fa = fetch --all
   cp = cherry-pick
+  diffc = diff --cached
 
   l = log --graph --decorate --pretty=oneline --abbrev-commit -n 23
   ll = log --pretty=oneline --abbrev-commit --max-count=15
