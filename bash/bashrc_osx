@@ -28,10 +28,6 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 NPM_COMPLETION="$DOTFILES_DIR/bash/npm-completion.sh"
 [ -f "$NPM_COMPLETION" ] && source "$NPM_COMPLETION"
 
-if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
-	PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
-fi
-
 # heroku toolbelt, stop adding yourself please
 if [ -d /usr/local/heroku/bin ]; then
     PATH="$PATH:/usr/local/heroku/bin"
@@ -44,3 +40,9 @@ fi
 # req: sudo gem install terminal-notifier
 # use: sleep 10; alert
 alias alert='terminal-notifier -title "Terminal" -message "Done with command"'
+
+if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
+    # brew cask install postgres
+    # Postgres cli tools
+    PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+fi
