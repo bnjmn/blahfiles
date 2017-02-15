@@ -52,3 +52,9 @@ if [ -d /Applications/Postgres.app/Contents/Versions/latest/bin ]; then
     # Postgres cli tools
     PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 fi
+
+# Execute commands on Vagrant remote
+vag() {
+  CMD="cd /vagrant; $@";
+  vagrant ssh -c "$CMD"
+}
