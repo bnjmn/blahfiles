@@ -34,6 +34,7 @@ if has('nvim')
     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'neomake/neomake'
+    Plug 'w0rp/ale'
 endif
 
 " colors
@@ -48,6 +49,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'stephpy/vim-yaml'
+Plug 'tmhedberg/SimpylFold'
 
 call plug#end()
 
@@ -97,6 +99,15 @@ let g:deoplete#omni#functions.javascript = [
   \ 'tern#Complete',
   \ 'jspc#omni'
 \]
+
+" SimpylFold
+
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_docstring = 0
+let g:SimpylFold_fold_import = 0
+
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 
 """"""""""""""""""""""""""
