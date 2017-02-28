@@ -34,7 +34,7 @@ if has('nvim')
     Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
     Plug 'neomake/neomake'
-    Plug 'w0rp/ale'
+    "Plug 'w0rp/ale'
 endif
 
 " colors
@@ -47,9 +47,10 @@ Plug 'lepture/vim-jinja'
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'pangloss/vim-javascript'
 Plug 'stephpy/vim-yaml'
 Plug 'tmhedberg/SimpylFold'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
@@ -65,7 +66,7 @@ let g:python3_host_prog = $PYENV_ROOT . '/versions/neovim3/bin/python'
 """"""""""""""""""""""""""
 
 " Ack!
-nnoremap <leader>a :Ack! 
+nnoremap <leader>a :Ack!<Space>
 nnoremap <leader>A :AckFromSearch<CR>
 
 
@@ -110,6 +111,9 @@ autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 
 
+
+
+
 """"""""""""""""""""""""""
 " GENERAL Settings
 """"""""""""""""""""""""""
@@ -147,6 +151,7 @@ set hlsearch
 set incsearch
 
 set tabpagemax=128
+set textwidth=80
 
 " See `:h Y`
 nnoremap Y y$
