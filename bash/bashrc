@@ -117,6 +117,8 @@ alias remove-swp-files='find . -name *.swp -exec rm -i '{}' \;'
 alias mv='mv -i'
 
 alias rm-python-byte-code='find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete'
+# Going to try this out
+export PYTHONDONTWRITEBYTECODE=1
 
 
 # ----------------------------------------------------------------------
