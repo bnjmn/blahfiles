@@ -51,6 +51,9 @@ Plug 'stephpy/vim-yaml'
 Plug 'tmhedberg/SimpylFold'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Raimondi/delimitMate'
+
 
 call plug#end()
 
@@ -109,9 +112,6 @@ let g:SimpylFold_fold_import = 0
 
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
-
-
-
 
 
 """"""""""""""""""""""""""
