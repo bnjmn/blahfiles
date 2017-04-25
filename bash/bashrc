@@ -33,6 +33,7 @@ if [[ "$(type -P pyenv)" ]]; then
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
+export PYTHONDONTWRITEBYTECODE=true
 
 export PIP_REQUIRE_VIRTUALENV=true
 _pip_completion() {
@@ -65,6 +66,7 @@ export VISUAL="$EDITOR"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS="--reverse --inline-info --height 60%"
 
 shopt -s histappend     # append history rather than overwrite
 shopt -s checkwinsize   # update LINES and COLUMNS after each command

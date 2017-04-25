@@ -2,6 +2,7 @@
 " by bnjmn
 
 
+
 if has('nvim')
     let g:plug_home = expand('<sfile>:p:h') . '/plugged'
 else
@@ -21,7 +22,9 @@ Plug 'tpope/vim-obsession'
 
 " others
 Plug 'scrooloose/nerdcommenter'
-Plug 'sjl/gundo.vim'
+"Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
+
 Plug 'airblade/vim-gitgutter'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'Arkham/vim-quickfixdo'
@@ -54,6 +57,7 @@ Plug 'mxw/vim-jsx'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
 
+Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
@@ -72,6 +76,11 @@ let g:python3_host_prog = $PYENV_ROOT . '/versions/neovim3/bin/python'
 nnoremap <leader>a :Ack!<Space>
 nnoremap <leader>A :AckFromSearch<CR>
 
+" Requires ag (silver surfer) installed
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+  "let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 
 " NerdCommenter
 let g:NERDCustomDelimiters = {
@@ -178,6 +187,9 @@ nnoremap <leader>tw :set wrap!<CR>:set wrap?<CR>
 nnoremap <leader>tsp :set spell!<CR>:set spell?<CR>
 " fix window height/width, keeps other windows from messing with it
 nnoremap <leader>tfw :set wfh!<CR>:set wfw!<CR>:set winfixwidth?<CR>
+
+nnoremap <leader>ff :FZF --reverse<CR>
+let g:fzf_layout = { 'down': '~40%' }
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.jy set filetype=python

@@ -1,15 +1,13 @@
 " Do not cross
 setlocal colorcolumn=100
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%106v.*/
 
-setlocal tabstop=4
-setlocal shiftwidth=4
-setlocal expandtab
-setlocal cindent
-setlocal smarttab
-setlocal formatoptions=croql
-setlocal number
+"setlocal tabstop=4
+"setlocal shiftwidth=4
+"setlocal expandtab
+"setlocal cindent
+"setlocal smarttab
+"setlocal formatoptions=croql
+"setlocal number
 
 nnoremap <leader>ot :call ft#open_test_file#OpenPythonTestFile() <CR>
 
