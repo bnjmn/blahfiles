@@ -1,5 +1,6 @@
 " Do not cross
 setlocal colorcolumn=100
+setlocal textwidth=99
 
 "setlocal tabstop=4
 "setlocal shiftwidth=4
@@ -24,5 +25,5 @@ let g:neomake_python_flake8_maker = { 'args': ['--max-line-length=99'], }
 
 let g:pymode_indent = 0
 
-map <C-Y> :call yapf#YAPF()<cr>
-imap <C-Y> <c-o>:call yapf#YAPF()<cr>
+"map <C-Y> :call yapf#YAPF()<cr>
+"imap <C-Y> <c-o>:call yapf#YAPF()<cr>
