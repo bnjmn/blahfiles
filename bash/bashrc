@@ -166,6 +166,10 @@ prompt_compact() {
     PS2="> "
 }
 
+
+source "$DOTFILES_DIR/bash/git-completion.bash"
+source "$DOTFILES_DIR/bash/git-prompt.sh"
+
 # TODO: Check for `__git_ps1` before running, sometimes isn't there
 GIT_PS1_SHOWDIRTYSTATE=1
 PS1_PWD_MAX=15
