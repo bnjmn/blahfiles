@@ -6,6 +6,7 @@
 .vagrant
 .DS_Store
 .python-version
+*.log
 
 tags
 pylint-report.html
