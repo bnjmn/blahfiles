@@ -1,9 +1,13 @@
 vim/.netrwhist
 vim/plugged
+vim/pluggedNeo
+vim/pluggedvim
 vim/autoload/plug.vim*
 
 nvim/.netrwhist
 nvim/plugged
+nvim/pluggedNeo
+nvim/pluggedvim
 nvim/autoload/plug.vim*
 nvim/spell/
 nvim/.init.vim-rplugin~

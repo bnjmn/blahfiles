@@ -2,9 +2,8 @@
 " by bnjmn
 
 
-
 if has('nvim')
-    let g:plug_home = expand('<sfile>:p:h') . '/plugged'
+    let g:plug_home = expand('<sfile>:p:h') . '/pluggedNeo'
 else
     let g:plug_home = expand('<sfile>:p:h') . '/pluggedVim'
 endif
@@ -20,16 +19,22 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-obsession'
 
+"Plug 'tpope/vim-vinegar'
+"Plug 'justinmk/vim-dirvish'
+Plug 'scrooloose/nerdtree'
+
+
 " others
 Plug 'scrooloose/nerdcommenter'
 "Plug 'sjl/gundo.vim'
-Plug 'mbbill/undotree'
+"Plug 'mbbill/undotree'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'Arkham/vim-quickfixdo'
 Plug 'mileszs/ack.vim'                        " depends on system ack
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-jedi'
