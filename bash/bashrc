@@ -24,26 +24,6 @@ PATH="/usr/local/bin:$PATH"
 PATH="$PATH:$DOTFILES_DIR/bin"
 
 
-################################################
-# PYTHON
-################################################
-
-if [[ "$(type -P pyenv)" ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-export PYTHONDONTWRITEBYTECODE=true
-
-export PIP_REQUIRE_VIRTUALENV=true
-_pip_completion() {
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F _pip_completion pip
-
-
 # GRUNT Work
 if [[ "$(type -P grunt)" ]]; then eval "$(grunt --completion=bash)"; fi
 
@@ -117,10 +97,6 @@ alias remove-swp-files='find . -name *.swp -exec rm -i '{}' \;'
 
 # Confirm overwrite when file exists
 alias mv='mv -i'
-
-alias rm-python-byte-code='find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete'
-# Going to try this out
-export PYTHONDONTWRITEBYTECODE=1
 
 
 # ----------------------------------------------------------------------
@@ -205,6 +181,9 @@ function get_os() {
 
 is_osx && source "$DOTFILES_DIR/bash/bashrc_osx"
 is_ubuntu && source "$DOTFILES_DIR/bash/bashrc_ubuntu"
+
+# python
+source "$DOTFILES_DIR/bash/bash_python"
 
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
 

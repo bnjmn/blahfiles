@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# PYTHON specific stuff
+
+# Use Homebrew python
+#TODO: add check for homebrew python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# Use Pyenv (puts pyenv first in path)
+if [[ "$(type -P pyenv)" ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+export PYTHONDONTWRITEBYTECODE=true
+
+# PIP
+export PIP_REQUIRE_VIRTUALENV=true
+
+_pip_completion() {
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 ) )
+}
+complete -o default -F _pip_completion pip
+
+alias rm-python-byte-code='find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete'
+# Going to try this out
+export PYTHONDONTWRITEBYTECODE=1

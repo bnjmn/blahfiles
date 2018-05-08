@@ -21,13 +21,15 @@ Plug 'tpope/vim-obsession'
 
 "Plug 'tpope/vim-vinegar'
 "Plug 'justinmk/vim-dirvish'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 
 
 " others
 Plug 'scrooloose/nerdcommenter'
 "Plug 'sjl/gundo.vim'
 "Plug 'mbbill/undotree'
+"Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'jmcantrell/vim-virtualenv'
@@ -90,7 +92,9 @@ endif
 " NerdCommenter
 let g:NERDCustomDelimiters = {
   \ 'jinja': { 'left': '{#', 'right': '#}' },
+  \ 'scss': { 'left': '/* ', 'right': ' */' },
   \ }
+
 
 
 " Deoplete
@@ -126,6 +130,9 @@ let g:SimpylFold_fold_import = 0
 
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+
+" Markdown
+let g:vim_markdown_folding_disabled = 1
 
 
 """"""""""""""""""""""""""
@@ -198,8 +205,8 @@ let g:fzf_layout = { 'down': '~40%' }
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.jy set filetype=python
-autocmd BufNewFile,BufReadPost *.eco set filetype=html
-autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm,*.nunj set filetype=jinja
+autocmd BufNewFile,BufReadPost *.eco,*.html set filetype=html
+autocmd BufNewFile,BufRead *.nunj set filetype=jinja
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -232,5 +239,20 @@ if !exists("*OpenTestFile")
         echo "Not Implemented"
     endfunction
 endif
+
+
+function! MyChangeTabStops(current, new)
+    let &l:tabstop = a:current
+    let &l:softtabstop = a:current
+    set noexpandtab
+    retab!
+    let &l:tabstop = a:new
+    let &l:softtabstop = a:new
+    set expandtab
+    retab
+endfunction
+
+command! -nargs=* MyChangeTabStops call MyChangeTabStops(<f-args>)
+
 
 nnoremap <leader>ot :call OpenTestFile()<CR>
