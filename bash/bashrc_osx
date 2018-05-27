@@ -3,7 +3,9 @@
 is_osx || return 1
 
 # reqs: brew install coreutils
-alias ls='gls --group-directories-first --color=auto'
+if [[ "$(type -P gls)" ]]; then
+    alias ls='gls --group-directories-first --color=auto'
+fi
 
 # up the user-system-wide resource limit
 ulimit -n 1024

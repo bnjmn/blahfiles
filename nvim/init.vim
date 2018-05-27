@@ -58,11 +58,13 @@ Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'stephpy/vim-yaml'
+Plug 'cespare/vim-toml'
 Plug 'tmhedberg/SimpylFold'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
+
 
 Plug 'AndrewRadev/splitjoin.vim'
 
