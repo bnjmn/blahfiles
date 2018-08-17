@@ -9,6 +9,7 @@
 
 ## Installation
 
+Currently, this system is only setup and tested for macOS.
 
 ### Requirements
 
