@@ -1,0 +1,17 @@
+{
+    "workbench.colorTheme": "Cobalt2",
+    "editor.tabSize": 2,
+    "prettier.disableLanguages": [
+        "js"
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+    },
+    "editor.formatOnSave": true,
+    // turn it off for JS
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+}
