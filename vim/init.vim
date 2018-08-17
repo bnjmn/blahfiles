@@ -1,11 +1,12 @@
-" N(eo)VIM run commands
+" (Neo)VIM run commands
 " by bnjmn
+" Works with vim8 and neovim
 
 
 if has('nvim')
-    let g:plug_home = expand('<sfile>:p:h') . '/pluggedNeo'
-else
-    let g:plug_home = expand('<sfile>:p:h') . '/pluggedVim'
+    let g:plug_home = expand('<sfile>:p:h') . '/neoplugs'
+else 
+    let g:plug_home = expand('<sfile>:p:h') . '/vimplugs'
 endif
 call plug#begin()
 
@@ -225,6 +226,11 @@ if has('nvim')
     tnoremap <C-l> <C-\><C-n><C-w>l
     "tnoremap <Esc> <C-\><C-n>
 endif
+
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 
 " Resize panes more than one line at a time
