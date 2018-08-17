@@ -25,15 +25,19 @@ $ brew install git
 
 ---
 
-### Install
+### Installation
 
-```bash
-git clone git@github.com:bnjmn/blahfiles.git ~/blahfiles
-cd ~/blahfiles && . install.sh
-```
+optional (work-in-progress):
 
 ```bash
 bash -c "`curl -fsSL https://raw.github.com/bnjmn/blahfiles/master/remote-setup.sh`"
+```
+
+install:
+
+```bash
+git clone git@github.com:bnjmn/blahfiles.git ~/blahfiles
+cd ~/blahfiles && ./install.sh
 ```
 
 [homebrew]: https://brew.sh/
