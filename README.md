@@ -5,12 +5,12 @@
 - run commands
 - blah blah blah
 
-<!--
 ![](https://media.giphy.com/media/iW8tsoJWcfPc4/giphy.gif)
--->
+
+## Installation
 
 
-## Requirements
+### Requirements
 
 [`homebrew`][homebrew] (see [requirements][brew-reqs])
 
@@ -23,9 +23,7 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 $ brew install git
 ```
 
----
-
-### Installation
+### Install
 
 optional (work-in-progress):
 
