@@ -14,10 +14,11 @@ get_vim_dir () {
 
 vim_dir=$(get_vim_dir)
 
+
 # Accept defaults from blahfiles/install.sh
 if [ -z ${ln_opts+x} ]; then
     ln_opts="-sv";
-else
+#else
     #echo "ln_opts is set to '$ln_opts'";
 fi
 
