@@ -36,7 +36,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'Arkham/vim-quickfixdo'
 Plug 'mileszs/ack.vim'                        " depends on system ack
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Installed with brew
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -52,6 +55,8 @@ endif
 Plug 'ap/vim-css-color'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gilgigilgil/anderson.vim'
+Plug 'connorholyday/vim-snazzy'
+
 
 " syntax
 Plug 'lepture/vim-jinja'
