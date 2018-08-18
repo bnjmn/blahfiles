@@ -26,6 +26,12 @@ for zsh-completions.
 
 [omz-github]: https://github.com/robbyrussell/oh-my-zsh
 
+resources:
+
+- http://zpalexander.com/switching-to-zsh/
+- https://ohmyz.sh/
+- https://github.com/robbyrussell/oh-my-zsh/wiki/themes
+
 --- 
 
 ## Next
