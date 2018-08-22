@@ -70,6 +70,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
+Plug 'wavded/vim-stylus'
 
 
 Plug 'AndrewRadev/splitjoin.vim'
