@@ -3,6 +3,8 @@ bats
 coreutils
 exiftool
 fdupes
+fish
+fzf
 gawk
 git
 hugo
@@ -17,3 +19,9 @@ trash
 tree
 whois
 yarn
+youtube-dl
+z
+zsh
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting
