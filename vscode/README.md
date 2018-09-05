@@ -12,7 +12,7 @@ Extensions are stored in `~/.vscode/extensions`
 run:
 
 ```
-code --list-extensions
+code --list-extensions > ~/blahfiles/vscode/installed-extensions
 ```
 https://stackoverflow.com/a/34339780/770019
 

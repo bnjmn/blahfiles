@@ -1,17 +1,55 @@
 {
-    "workbench.colorTheme": "Cobalt2",
-    "editor.tabSize": 2,
-    "prettier.disableLanguages": [
-        "js"
-    ],
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact",
-    },
-    "editor.formatOnSave": true,
-    // turn it off for JS
-    "[javascript]": {
-        "editor.formatOnSave": false
-    },
-    "eslint.autoFixOnSave": true,
-    "eslint.alwaysShowStatus": true,
+  "workbench.colorTheme": "Cobalt2",
+  "editor.tabSize": 2,
+  // "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  // "editor.fontSize": 14,
+  // "editor.lineHeight": 18,
+  // "editor.letterSpacing": 0.5,
+  // "editor.action.commentLine": "<space> + c + <space>
+  "files.insertFinalNewline": false,
+  "editor.cursorBlinking": "solid",
+  "html.format.enable": true,
+  "html.format.preserveNewLines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.next": true
+  },
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.activityBar.visible": true,
+  "editor.rulers": [80, 100, 120],
+  "prettier.disableLanguages": [
+    //"js"
+  ],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.formatOnSave": true,
+  // turn it off for JS
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "window.zoomLevel": 0,
+  // "eslint.autoFixOnSave": true,
+  // "eslint.alwaysShowStatus": true,
+  // "editor.formatOnPaste": true,
+  // "editor.formatOnType": false,
+  "vim.leader": "<space>",
+  // recreate NERD-commenter style comment toggle :)
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "c", "<space>"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "c", "<space>"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ]
 }
