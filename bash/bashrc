@@ -190,3 +190,6 @@ source "$DOTFILES_DIR/bash/bash_python"
 # Up and down search based on what was typed in so far
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+
+
+#source "$DOTFILES_DIR/iterm/dark-top-bar.sh"

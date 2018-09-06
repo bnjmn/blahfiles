@@ -56,6 +56,7 @@ Plug 'ap/vim-css-color'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gilgigilgil/anderson.vim'
 Plug 'connorholyday/vim-snazzy'
+Plug 'joshdick/onedark.vim'
 
 
 " syntax
@@ -149,7 +150,9 @@ let g:vim_markdown_folding_disabled = 1
 """"""""""""""""""""""""""
 
 set background=dark
-if has#colorscheme('solarized')
+if has#colorscheme('onedark')
+    colorscheme onedark
+elseif has#colorscheme('solarized')
     colorscheme solarized
 else
     colorscheme pablo
