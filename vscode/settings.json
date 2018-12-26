@@ -1,16 +1,17 @@
 {
-  "workbench.colorTheme": "Cobalt2",
+  "editor.fontSize": 12,
   "editor.tabSize": 2,
-  // "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
-  // "editor.fontSize": 14,
-  // "editor.lineHeight": 18,
-  // "editor.letterSpacing": 0.5,
-  // "editor.action.commentLine": "<space> + c + <space>
-  "files.insertFinalNewline": false,
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
-  "html.format.enable": true,
-  "html.format.preserveNewLines": true,
-  "files.trimTrailingWhitespace": true,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "workbench.colorTheme": "Material Theme",
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.activityBar.visible": true,
+  "files.autoSave": "off",
+  "files.insertFinalNewline": false,
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -19,31 +20,32 @@
     "**/.DS_Store": true,
     "**/.next": true
   },
-  "workbench.editor.tabCloseButton": "off",
-  "workbench.activityBar.visible": true,
+  "html.format.enable": true,
+  "html.format.preserveNewLines": true,
+  "files.trimTrailingWhitespace": true,
   "editor.rulers": [80, 100, 120],
-  "prettier.disableLanguages": [
-    //"js"
-  ],
+  "prettier.disableLanguages": ["js"],
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "editor.formatOnSave": true,
   // turn it off for JS
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
   },
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "npm",
   "window.zoomLevel": 0,
-  // "eslint.autoFixOnSave": true,
-  // "eslint.alwaysShowStatus": true,
-  // "editor.formatOnPaste": true,
-  // "editor.formatOnType": false,
   "vim.leader": "<space>",
   // recreate NERD-commenter style comment toggle :)
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<leader>", "c", "<space>"],
       "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["<C-w>", "l"]
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -51,5 +53,6 @@
       "before": ["<leader>", "c", "<space>"],
       "commands": ["editor.action.commentLine"]
     }
-  ]
+  ],
+  "cSpell.userWords": ["cowsay", "styl", "unfetch", "yogahombre", "zeit"]
 }

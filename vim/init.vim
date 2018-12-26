@@ -10,6 +10,11 @@ else
 endif
 call plug#begin()
 
+" See -> https://github.com/dag/vim-fish#teach-a-vim-to-fish
+if &shell =~# 'fish$'
+    set shell=bash
+endif
+
 " tpope
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -72,6 +77,9 @@ Plug 'mxw/vim-jsx'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
 Plug 'wavded/vim-stylus'
+Plug 'dag/vim-fish'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 
 
 Plug 'AndrewRadev/splitjoin.vim'

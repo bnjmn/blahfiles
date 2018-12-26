@@ -1,0 +1,7 @@
+# .prettierrc
+# see options -> https://prettier.io/docs/en/options.html
+printWidth: 100
+tabWidth: 2
+useTabs: false
+semi: true
+parser: flow
