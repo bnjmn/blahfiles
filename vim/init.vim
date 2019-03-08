@@ -230,6 +230,9 @@ autocmd BufNewFile,BufRead *.nunj set filetype=jinja
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" allow vim to write backupcopy for crontab
+autocmd FileType crontab setlocal bkc=yes
+
 " Window Movement Mappings - Make switching windows easier
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
